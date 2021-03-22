@@ -1,0 +1,26 @@
+{% extends "base.html"%}
+{% block content %}
+
+<br>
+
+<div class="d-flex justify-content-center">
+
+    <br>
+     <div class="container align-self-center">
+        <div class="jumbotron">
+            {#<h1 class="display-4">Study Introduction</h1>#}
+            <p class="lead">Thank you for participating in our study!</p>
+            {#<hr class="my-4">
+            <p>Here are potentially some more instructions</p>#}
+            <p class="lead">
+                    <a href="{{url_for('goodbye')}}"> <button type="button" class="btn btn-primary">Log Out and Complete Study</button></a>
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% endblock %}

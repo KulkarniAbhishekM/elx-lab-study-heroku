@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+  <meta charset="utf-8">
+  <title>Learning Title</title>
+  <!-- bootstrap -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+  <script src="https://kit.fontawesome.com/527d5ab32f.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+
+  <script type="text/javascript">
+  var firebaseConfig = {
+  apiKey: "AIzaSyDsxuOBeNP8ke-I8BV4PHWHAEAmYP4N_sU",
+  authDomain: "interest-driven-learning.firebaseapp.com",
+  databaseURL: "https://interest-driven-learning-default-rtdb.firebaseio.com",
+  projectId: "interest-driven-learning",
+  storageBucket: "interest-driven-learning.appspot.com",
+  messagingSenderId: "314432529666",
+  appId: "1:314432529666:web:69cc019f4c5801c1c20e1b",
+  measurementId: "G-8GFGM91EX0"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+</script>
+  <script src="{{url_for('static', filename='script.js')}}"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='design.css') }}">
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+
+</head>
+
+<body>
+  <div id="heading">
+
+
+
+  </div>
+
+  {% block content %}
+  {% endblock %}
+</body>
+
+</html>

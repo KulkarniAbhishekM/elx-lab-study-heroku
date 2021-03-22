@@ -1,0 +1,159 @@
+{% extends "base.html"%}
+{% block content %}
+
+<div class="grid-container">
+  <div class="item1">
+    <h1>Section 2: Cryptography</h1>
+    <p>This study will contain three informational videos and the corresponding quizzes. You can interact with the
+      chat guide and rely on it
+      to help you to understand the concept better. </p>
+  </div>
+  <div class="item2">
+    <ul>
+
+      {%if sec1%}
+      <li><a href="{{url_for('superposition')}}">Section 1 <i style="color:green;" class="fas fa-check-circle"></i> </a>
+      </li>
+      {% else %}
+      <li><a class="isDisabled" href="" disabled>Section 1</a></li>
+      {% endif %}
+
+      {%if sec2%}
+      <li><a class="active">Section 2 <i style="color:green;" class="fas fa-check-circle"></i></a></li>
+      {% else %}
+      <li><a class="active">Section 2</a></li>
+      {% endif %}
+
+      {%if sec3%}
+      <li><a href="{{url_for('dnsHarvesting')}}">Section 3 <i style="color:green;" class="fas fa-check-circle"></i></a>
+      </li>
+      {% else %}
+      <li><a class="isDisabled" href="" disabled>Section 3</a></li>
+      {% endif %}
+
+    </ul>
+
+  </div>
+  <div class="item3">
+    <video id="player" width="854" height="488" controls>
+      <source src="../static/Cryptography.mp4" type="video/mp4">
+   {#   <source src="../static/Cryptography.mov" type="video/mp4"> UNCOMMENT AND REPLACE WHEN DEPLOYING #}
+
+
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  {% if not sec2 %}
+
+  <div id="quiz-body-2" class="item5">
+    <div class="quiz">
+
+      <form method="POST">
+
+
+        <div class="form-check">
+          <h2>Section 2 Quiz</h2>
+          <hr>
+          {{ form.hidden_tag() }}
+          <h4>{{ form.question1.label(class="question-text") }}</h4>
+          <p>{{ form.question1(class="quiz-text") }}</p>
+          <h4>{{ form.question2.label(class="question-text") }}</h4>
+          <p>{{ form.question2(class="quiz-text") }}</p>
+          <h4>{{ form.question3.label(class="question-text") }} </h4>
+          {{ form.question3(class="form-control form-control-lg") }}
+          <br>
+          <button id="fake-button" class='btn btn-secondary' disabled></button>
+          <div id="submit-area" class="submit-area">
+ <button id="submit" class='btn btn-info'
+              onclick="updateDatabase()">{{ form.submit( class='btn btn-info') }}</button>          </div>
+
+        </div>
+
+        {%if submitted%}
+        <br>
+        <div class="submitted">Thank you for submitting! Click next section to continue.</div>
+        {%endif%}
+
+      </form>
+    </div>
+    <br>
+
+  </div>
+    {% endif %}
+
+</div>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyDsxuOBeNP8ke-I8BV4PHWHAEAmYP4N_sU",
+    authDomain: "interest-driven-learning.firebaseapp.com",
+    databaseURL: "https://interest-driven-learning-default-rtdb.firebaseio.com",
+    projectId: "interest-driven-learning",
+    storageBucket: "interest-driven-learning.appspot.com",
+    messagingSenderId: "314432529666",
+    appId: "1:314432529666:web:69cc019f4c5801c1c20e1b",
+    measurementId: "G-8GFGM91EX0"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var totalTimer = setInterval(totalCounter, 250);
+  var quizTimer;
+
+  var db = firebase.database();
+  var username = "{{user}}"
+  var countTotal = 0;
+  var countQuiz = 0;
+
+
+  function totalCounter() {
+    countTotal = countTotal + 0.25;
+  }
+
+  function quizCounter() {
+    countQuiz = countQuiz + 0.25;
+  }
+
+  var refTotal = db.ref(username + "/control/cryptography/totalTime");
+  var refQuiz = db.ref(username + "/control/cryptography/quizTime");
+  console.log(username);
+
+  function writeNewPost() {
+    clearInterval(totalTimer);
+    clearInterval(quizTimer);
+    console.log("in the function");
+    data = 100
+    console.log(refTotal);
+    console.log(data);
+    refTotal.set(countTotal);
+    refQuiz.set(countQuiz);
+  }
+</script>
+
+<script type="text/javascript">
+  {% if not sec2 %}
+
+  var video = document.getElementById("player");
+
+  video.addEventListener('ended', (event) => {
+
+    console.log("the video has ended ");
+    document.getElementById("submit-area").style.display = 'block';
+    document.getElementById("fake-button").style.display = 'none';
+    document.getElementById("quiz-body-2").style.display = 'block';
+    quizTimer = setInterval(quizCounter, 500);
+
+
+  });
+    {% endif %}
+
+</script>
+{% endblock %}

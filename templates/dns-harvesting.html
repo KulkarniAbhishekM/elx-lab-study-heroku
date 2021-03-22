@@ -1,0 +1,159 @@
+{% extends "base.html"%}
+{% block content %}
+
+<div class="grid-container">
+  <div class="item1">
+    <h1>Section 3: DNS Harvesting</h1>
+
+  </div>
+  <div class="item2">
+    <ul>
+      {%if sec1%}
+      <li><a href="{{url_for('superposition')}}">Section 1 <i style="color:green;" class="fas fa-check-circle"></i> </a>
+      </li>
+      {% else %}
+      <li><a class="isDisabled" disabled>Section 1</a></li>
+      {% endif %}
+
+
+      {%if sec2%}
+      <li><a href="{{url_for('restAPI')}}">Section 2 <i style="color:green;" class="fas fa-check-circle"></i></a></li>
+      {% else %}
+      <li><a class="isDisabled">Section 2</a></li>
+      {% endif %}
+
+      {%if sec3%}
+      <li><a class="active">Section 3 <i style="color:green;" class="fas fa-check-circle"></i></a>
+      </li>
+      {% else %}
+      <li><a class="active">Section 3</a></li>
+      {% endif %}
+
+    </ul>
+
+  </div>
+  <div class="item3">
+    <video id="player" width="854" height="488" controls>
+      <source src="../static/Cryptography.mp4" type="video/mp4">
+      {# <source src="../static/DNS_Harvesting.mov" type="video/mp4"> UNCOMMENT AND REPLACE WHEN DEPLOYING #}
+      Your browser does not support the video tag.
+    </video>
+
+
+  </div>
+  <div class="item4">
+    <div id="chatbot-text" class="hidestart">
+
+      <div class="received_msg">
+        <span class="time_date"> <button class="btn btn-sm btn-outline-danger" onclick="closeChatbot()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x"
+              viewBox="0 0 16 16">
+              <path
+                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button></span>
+
+        <div class="received_withd_msg time_date">
+          {#<p>{{one_liner}}</p>#}
+          <p>Do you want to learn about DNS Harvesting in the context of {{interest}}?</p>
+        </div>
+        <span class="time_date">
+
+          <div id="yes-no-buttons">
+            <button id="yes-lesson" class="more-line btn btn-sm btn-info" onclick="showLesson()">Yes</button>
+            <button id="no-lesson" class="more-line btn btn-sm btn-secondary" onclick="closeChatbot()">No</button>
+          </div>
+
+        </span>
+      </div>
+
+      <div class="received_msg">
+        <div class="received_withd_msg">
+          <p id="more-text-A" class="more"> {{lesson}} </p>
+        </div>
+      </div>
+
+      <div class="received_msg">
+
+        <div class="received_withd_msg time_date">
+          <p id="was-that-helpful" class="more time_date">Was that lesson helpful?</p>
+        </div>
+
+        <span class="time_date">
+          <div id="yes-no-buttons-helpful" class="more">
+            <button id="yes-helpful" class="more-line btn btn-sm btn-info" onclick="thanksYes()">Yes!</button>
+            <button id="no-helpful" class="more-line btn btn-sm btn-secondary" onclick="thanksNo()">Not Really</button>
+          </div>
+        </span>
+      </div>
+
+      <div id="thanks" class="received_msg more">
+        <div class="received_withd_msg">
+          <div>
+            <p class="time_date">Thank you for the input!</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="post-study-q" class="received_msg more">
+        <div class="received_withd_msg">
+          <p id="hint2" class="B">Post study questionnaire insert</p>
+        </div>
+      </div>
+
+    </div>
+    <div id="chatbot" class="col-sm-4" onclick="openChatbot()">
+      <div class="item">
+        <img src="../static/chatbot-icon.png" alt="chatbot-icon" width="50" height="50">
+      </div>
+    </div>
+
+  </div>
+  {% if not sec3 %}
+  <div id="quiz-body-3" class="item5">
+    <div class="quiz">
+
+      <form method="POST">
+
+
+        <div class="form-check">
+          <h2>Section 3 Quiz</h2>
+          <hr>
+          {{ form.hidden_tag() }}
+          <h4>{{ form.question1.label(class="question-text") }}</h4>
+          <p>{{ form.question1(class="quiz-text") }}</p>
+          <h4>{{ form.question2.label(class="question-text") }}</h4>
+          <p>{{ form.question2(class="quiz-text") }}</p>
+          <h4>{{ form.question3.label(class="question-text") }} </h4>
+          {{ form.question3(class="form-control form-control-lg") }}
+          <br>
+          <button id="fake-button" class='btn btn-secondary' disabled></button>
+          <div id="submit-area" class="submit-area">
+            <button id="submit" class='btn btn-info'
+              onclick="updateDatabase()">{{ form.submit( class='btn btn-info') }}</button>
+          </div>
+
+        </div>
+
+
+      </form>
+    </div>
+    <br>
+
+  </div>
+  {% endif %}
+</div>
+
+<script>
+  var u = "{{user}}"
+
+  setUp(u, 3);
+
+  addVideoListener();
+
+  {% if not sec3 %}
+    addQuizListener(3);
+
+  {% endif %}
+</script>
+{% endblock %}

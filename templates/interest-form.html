@@ -1,0 +1,105 @@
+{% extends "base.html"%}
+{% block content %}
+
+
+<br>
+
+<div class="d-flex justify-content-center">
+
+    {% if notify == True %}
+    <script>
+        alert("Please fill out all fields!");
+    </script>
+    {% endif %}
+    <form method="POST">
+        <h2>Pre-Study Interest Survey</h2>
+        <hr>
+
+        {{ form.hidden_tag() }}
+        <h5 class=question> Of the provided topics, which one interests you the most?
+        </h5>
+
+        {{ form.interestChoice(class="form-control") }}
+        <hr>
+
+        <h5 class="question question-subtext">For each of these questions, please answer on a scale of 1 (not at all) to
+            7 (very much)</h5>
+
+
+        <div class="form-wrapper">
+            <p> On a scale of 1-7, how much do you enjoy reading?
+            </p>
+            {% for subfield in form.readingRate %}
+            <div class="form-check form-check-inline">
+                {{ subfield(class='form-check-input') }}
+                {{ subfield.label(class='form-check-label') }}
+            </div>
+            {% endfor %}
+        </div>
+
+
+        <div class="form-wrapper">
+            <p> On a scale of 1-7, how much do you enjoy playing video games?
+            </p>
+            {% for subfield in form.gamingRate %}
+            <div class="form-check form-check-inline">
+                {{ subfield(class='form-check-input') }}
+                {{ subfield.label(class='form-check-label') }}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="form-wrapper">
+            <p> On a scale of 1-7, how much do you enjoy playing or listening to music?
+            </p>
+            {% for subfield in form.musicRate %}
+            <div class="form-check form-check-inline">
+                {{ subfield(class='form-check-input') }}
+                {{ subfield.label(class='form-check-label') }}
+            </div>
+
+            {% endfor %}
+        </div>
+
+        <div class="form-wrapper">
+            <p> On a scale of 1-7, how much do you enjoy playing or watching sports?
+            </p>
+            {% for subfield in form.sportsRate %}
+            <div class="form-check form-check-inline">
+                {{ subfield(class='form-check-input') }}
+                {{ subfield.label(class='form-check-label') }}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="form-wrapper">
+
+            <p> On a scale of 1-7, how much do you enjoy cooking?
+            </p>
+            {% for subfield in form.cookingRate %}
+            <div class="form-check form-check-inline">
+                {{ subfield(class='form-check-input') }}
+                {{ subfield.label(class='form-check-label') }}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="form-wrapper">
+
+            {{ form.submit(class="btn btn-info") }}
+        </div>
+
+    </form>
+</div>
+
+<script>
+    function myFunction() {
+        alert("Please fill out all fields!");
+    }
+</script>
+
+{#
+<a href="{{url_for('video_test')}}">Submit interest form and continue to study</a>
+#}
+
+{% endblock %}

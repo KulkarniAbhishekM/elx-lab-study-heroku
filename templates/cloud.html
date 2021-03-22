@@ -1,0 +1,97 @@
+{% extends "base.html"%}
+{% block content %}
+
+<div class="grid-container">
+  <div class="item1">
+    <h1>Section 3: Cloud Computing</h1>
+    <br>
+    <hr>
+    <br>
+  </div>
+  <div class="item2">
+    <ul>
+      {%if sec1%}
+      <li><a href="{{url_for('superposition')}}">Section 1 <i style="color:green;" class="fas fa-check-circle"></i> </a>
+      </li>
+      {% else %}
+      <li><a class="isDisabled" disabled>Section 1</a></li>
+      {% endif %}
+
+
+      {%if sec2%}
+      <li><a href="{{url_for('restAPI')}}">Section 2 <i style="color:green;" class="fas fa-check-circle"></i></a></li>
+      {% else %}
+      <li><a class="isDisabled">Section 2</a></li>
+      {% endif %}
+
+      {%if sec3%}
+      <li><a class="active">Section 3 <i style="color:green;" class="fas fa-check-circle"></i></a>
+      </li>
+      {% else %}
+      <li><a class="active">Section 3</a></li>
+      {% endif %}
+
+    </ul>
+
+  </div>
+  <div class="item3">
+    <video id="player" width="854" height="488" controls>
+      <source src="../static/Cryptography.mp4" type="video/mp4">
+     {# <source src="../static/Cloud_Computing.mov" type="video/mp4"> UNCOMMENT AND REPLACE WHEN DEPLOYING #}
+
+      Your browser does not support the video tag.
+    </video>
+
+
+  </div>
+
+   {% if not sec3 %}
+  <div id="quiz-body-3" class="item5">
+    <div class="quiz">
+
+      <form method="POST">
+
+
+        <div class="form-check">
+          <h2>Section 3 Quiz</h2>
+          <hr>
+          <hr>
+          {{ form.hidden_tag() }}
+          <h4>{{ form.question1.label(class="question-text") }}</h4>
+          <p>{{ form.question1(class="quiz-text") }}</p>
+          <h4>{{ form.question2.label(class="question-text") }}</h4>
+          <p>{{ form.question2(class="quiz-text") }}</p>
+          <h4>{{ form.question3.label(class="question-text") }} </h4>
+          {{ form.question3(class="form-control form-control-lg") }}
+          <br>
+          <button id="fake-button" class='btn btn-secondary' disabled></button>
+          <div id="submit-area" class="submit-area">
+ <button id="submit" class='btn btn-info'
+              onclick="updateDatabase()">{{ form.submit( class='btn btn-info') }}</button>          </div>
+
+        </div>
+
+      </form>
+    </div>
+</div>
+{% endif %}
+
+<script type="text/javascript">
+
+  {% if not sec3 %}
+
+  var video = document.getElementById("player");
+
+  video.addEventListener('ended', (event) => {
+
+    console.log("the video has ended ");
+    document.getElementById("submit-area").style.display = 'block';
+    document.getElementById("fake-button").style.display = 'none';
+    document.getElementById("quiz-body-3").style.display = 'block';
+
+  });
+  {% endif %}
+
+
+</script>
+{% endblock %}

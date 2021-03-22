@@ -1,0 +1,45 @@
+{% extends "base.html"%}
+{% block content %}
+
+<br>
+<div class="justify-content-center">
+
+
+    <h1 class="text-center">Studying the effects of Interest-Driven Learning on Students' Learning, Motivation, and
+        Self-Efficacy</h1>
+
+    <br>
+    <hr>
+    <br>
+
+    <form class="col-lg-6 offset-lg-3 " method="POST">
+
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Please enter your given key to begin</label>
+            {% if error %}
+            {{ form.key(class="form-control is-invalid") }}
+            {% else %}
+            {{ form.key(class="form-control") }}
+            {% endif %}
+            <small id="emailHelp" class="form-text text-muted">This key was provided to you in an email from LIST EMAIL
+                LAB NAME.</small>
+            {% if error %}
+            <div class="invalid-feedback">Please enter in a valid key.</div>
+            {% endif %}
+
+        </div>
+
+
+        {{ form.submit(class="btn btn-info") }}
+
+
+
+    </form>
+
+</div>
+
+
+
+{% endblock %}

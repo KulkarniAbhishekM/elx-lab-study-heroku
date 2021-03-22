@@ -1,0 +1,34 @@
+{% extends "base.html"%}
+{% block content %}
+
+
+<br>
+
+<div class="d-flex justify-content-center">
+
+    <div class="container align-self-center">
+        <div class="jumbotron">
+            <h1 class="display-4">Section 1</h1>
+            <p class="lead">The researcher will now explain the study process. Click "Begin" when you are ready to
+                begin Section 1.</p>
+            {#<hr class="my-4">
+            <p>Here are potentially some more instructions</p>#}
+            <p class="lead">
+                {% if start == 'e' %}
+                <a href="{{url_for('superposition')}}"> <button type="button" class="btn btn-primary btn-lg">Begin
+                        </button></a>
+                {% elif start == 'c' %}
+                <a href="{{url_for('entanglement')}}"> <button type="button" class="btn btn-primary btn-lg">Begin
+                        </button></a>
+                {%endif%}
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}
