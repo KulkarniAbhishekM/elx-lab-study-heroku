@@ -1,0 +1,157 @@
+.hidestart {
+    display: none;
+}
+
+#chatbot-text {
+    /* background-color: #05728f ;	 */
+    color: black;
+    padding: 5px;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);	 */
+    color: black;
+    padding: 5px;
+    align-self: end;
+    justify-self: end;
+    font-size: 11px;
+    max-width:400px;
+    max-height: 400px;
+    overflow-y: auto;
+
+}
+
+#chatbot{
+    cursor: pointer;
+}
+
+.more-link {
+    color: blue;
+    text-decoration: underline;
+}
+
+.more-link:hover {
+    cursor: pointer;
+}
+
+.more {
+    display: none;
+}
+
+.item {
+    position: relative;
+    /* padding-top: 20px; */
+    display: inline-block;
+}
+
+.notify-badge {
+    position: absolute;
+    right: -10px;
+    top: 10px;
+    background: red;
+    text-align: center;
+    border-radius: 20px 20px 20px 20px;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    display: none;
+}
+
+.video {
+    justify-self: center;
+}
+
+.quiz {
+    padding: 20px;
+    background-color: rgb(211, 210, 210);
+    border-radius: 10px;
+}
+
+.quiz-text {
+    font-size: 13px;
+}
+
+.question-text{
+    font-size: 16px;
+}
+
+/* #line1{
+    display: none;
+}
+
+#hint2{
+    display: none;
+} */
+
+/* #tell-me-more-B{
+    display:none
+} */
+
+.B {
+    display: none;
+}
+
+
+.btn.likert-1 {
+    background-color: darkgreen;
+    color: yellow;
+}
+
+.btn.likert-2 {
+    background-color: lightgreen;
+    color: brown;
+}
+
+.btn.likert-3 {
+    background-color: yellow;
+    color: brown;
+}
+
+.btn.likert-4 {
+    background-color: orange;
+    color: white;
+}
+
+.btn.likert-5 {
+    background-color: red;
+    color: white;
+}
+
+.btn.likert{
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+}
+
+.btn.likert:hover{
+    background-color: #79c0d8;
+}
+
+.submit-area{
+    display:none;
+}
+
+
+.form-wrapper{
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+.question {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.question-subtext{
+    font-style: italic;
+    color: darkgrey;
+}
+
+#quiz-body{
+    display: none;
+}
+
+#quiz-body-2{
+    display: none;
+}
+
+#quiz-body-3{
+    display: none;
+}
