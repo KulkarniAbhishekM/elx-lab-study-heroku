@@ -164,8 +164,8 @@ function botCounter() {
 
 function openChatbot() {
   if (document.getElementById("chatbot-text").style.display != "inline-block") {
-    document.getElementById("chatbot-text").style.display = 'inline-block';
     if (openAllowed) {
+      document.getElementById("chatbot-text").style.display = 'inline-block';
       botTimer = setInterval(botCounter, 250);
       refOpenCount.set(++botOpenCount);
       console.log("open bot");
