@@ -129,17 +129,12 @@
 
 <script type="text/javascript">
 
-  {% if not sec1 %}
-var video = document.getElementById("player");
-  video.addEventListener('ended', (event) => {
-    console.log("the video has ended ");
-    document.getElementById("submit-area").style.display = 'block';
-    document.getElementById("fake-button").style.display = 'none';
-    document.getElementById("quiz-body").style.display = 'block';
-    quizTimer = setInterval(quizCounter, 500);
+  var u = "{{user}}"
 
+  setUp(u, 4);
 
-  });
+  {%if not sec1 %}
+    addQuizListener(1);
   {% endif %}
 
 </script>

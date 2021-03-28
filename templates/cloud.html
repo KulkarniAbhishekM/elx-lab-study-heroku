@@ -78,18 +78,12 @@
 
 <script type="text/javascript">
 
-  {% if not sec3 %}
+  var u = "{{user}}"
 
-  var video = document.getElementById("player");
+  setUp(u, 6);
 
-  video.addEventListener('ended', (event) => {
-
-    console.log("the video has ended ");
-    document.getElementById("submit-area").style.display = 'block';
-    document.getElementById("fake-button").style.display = 'none';
-    document.getElementById("quiz-body-3").style.display = 'block';
-
-  });
+  {%if not sec3 %}
+    addQuizListener(3);
   {% endif %}
 
 

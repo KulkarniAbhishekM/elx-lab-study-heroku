@@ -19,6 +19,7 @@ var botCloseCount = "";
 
 // used for db references
 var username = "";
+var pageID = 0;
 var refTotal = "";
 var refQuiz = "";
 var refBotTime = "";
@@ -32,6 +33,7 @@ var videoStopTime = 0;
 function setUp(u, id) {
 
   username = u;
+  pageID = id;
   console.log(username);
   refOpenCount = db.ref(username + "/openCount");
   refCloseCount = db.ref(username + "/closeCount");
@@ -55,6 +57,15 @@ function setUp(u, id) {
     refBotTime = db.ref(username + "/experimental/dns/botTime");
     refHelpful = db.ref(username + "/experimental/dns/lessonHelpful");
     videoStopTime = 221.0;
+  } else if (id == 4){
+    refTotal = db.ref(username + "/control/entanglement/totalTime");
+    refQuiz = db.ref(username + "/control/entanglement/quizTime");
+  } else if (id == 5){
+    refTotal = db.ref(username + "/control/cryptography/totalTime");
+    refQuiz = db.ref(username + "/control/cryptography/quizTime");
+  } else if (id == 6){
+    refTotal = db.ref(username + "/control/cloud/totalTime");
+    refQuiz = db.ref(username + "/control/cloud/quizTime");
   }
 
   refLearnCount.on('value', function (snapshot) {
@@ -188,6 +199,8 @@ function updateDatabase() {
 
   refTotal.set(countTotal);
   refQuiz.set(countQuiz);
-  refBotTime.set(countBot);
+  if (pageID == 1 || pageID == 2 || pageID == 3){
+    refBotTime.set(countBot);
+  }
 
 }
