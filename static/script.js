@@ -124,8 +124,6 @@ function addVideoListener() {
   });
 }
 
-
-
 // shows the lesson
 function showLesson() {
   clearInterval(botTimer);
@@ -199,6 +197,7 @@ function updateDatabase() {
 
   refTotal.set(countTotal);
   refQuiz.set(countQuiz);
+  
   if (pageID == 1 || pageID == 2 || pageID == 3){
     refBotTime.set(countBot);
   }

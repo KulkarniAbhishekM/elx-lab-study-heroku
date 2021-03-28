@@ -11,7 +11,7 @@
   <div class="item2">
     <ul>
       {%if sec1%}
-      <li><a href="{{url_for('superposition')}}">Section 1 <i style="color:green;" class="fas fa-check-circle"></i> </a>
+      <li><a href="{{url_for('entanglement')}}">Section 1 <i style="color:green;" class="fas fa-check-circle"></i> </a>
       </li>
       {% else %}
       <li><a class="isDisabled" disabled>Section 1</a></li>
@@ -19,7 +19,7 @@
 
 
       {%if sec2%}
-      <li><a href="{{url_for('restAPI')}}">Section 2 <i style="color:green;" class="fas fa-check-circle"></i></a></li>
+      <li><a href="{{url_for('cryptography')}}">Section 2 <i style="color:green;" class="fas fa-check-circle"></i></a></li>
       {% else %}
       <li><a class="isDisabled">Section 2</a></li>
       {% endif %}
@@ -66,8 +66,7 @@
           <br>
           <button id="fake-button" class='btn btn-secondary' disabled></button>
           <div id="submit-area" class="submit-area">
- <button id="submit" class='btn btn-info'
-              onclick="updateDatabase()">{{ form.submit( class='btn btn-info') }}</button>          </div>
+ <button id="submit" class='btn btn-info' onclick="updateDatabase()">{{ form.submit( class='btn btn-info') }}</button>          </div>
 
         </div>
 
