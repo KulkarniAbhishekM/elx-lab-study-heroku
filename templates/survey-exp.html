@@ -1,0 +1,33 @@
+{% extends "base.html"%}
+{% block content %}
+
+
+<br>
+
+<div class="d-flex justify-content-center">
+
+    <div class="container align-self-center">
+        <div class="jumbotron">
+            <h1 class="display-4">Questionnaire</h1>
+                        <br>
+
+            <p class="lead">Please fill out  <a href="https://ufl.qualtrics.com/jfe/form/SV_6kZVJR1TLMEfIkS" target="_blank"> this survey</a> before continuing.</p>
+            
+            <p>After you've filled out the survey, you may continue with the study.</p>
+           {% if start == 'e' %}
+                <a href="{{url_for('study_break')}}"> <button type="button" class="btn btn-primary btn-lg">Continue
+                        </button></a>
+                {% elif start == 'c' %}
+                <a href="{{url_for('final_page')}}"> <button type="button" class="btn btn-primary btn-lg">Continue
+                        </button></a>
+                {%endif%}
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}

@@ -188,7 +188,14 @@ def study_break():
         return render_template("study-break.html", start=session['start'])
     else:
         return redirect(url_for('demographics'))
-    
+
+@app.route("/survey1")
+def survey_exp():
+    return render_template("survey-exp.html", start=session['start'])
+
+@app.route("/survey2")
+def survey_con():
+    return render_template("survey-con.html", start=session['start'])
 
 @app.route("/superposition", methods=['GET', 'POST'])
 def superposition():
@@ -284,10 +291,12 @@ def dnsHarvesting():
             db.child(session['username']).child('experimental').child('dns').update(data)
             session['dns'] = True
 
-            if session['start'] == 'e':
-                return redirect(url_for('study_break'))
-            elif session['start'] == 'c':
-                return redirect(url_for('final_page'))
+            return redirect(url_for('survey_exp'))
+            # if session['start'] == 'e':
+            #     return redirect(url_for('survey_exp'))
+            #     # return redirect(url_for('study_break'))
+            # elif session['start'] == 'c':
+            #     return redirect(url_for('final_page'))
 
 
         return render_template("dns-harvesting.html", form=form, user=session['username'], interest=session['interest'], sec1=session['superposition'], sec2=session['restAPI'], sec3=session['dns'], one_liner=one_liner, lesson=lesson)
@@ -372,10 +381,11 @@ def cloud():
             db.child(session['username']).child('control').child('cloud').update(data)
             session['cloud'] = True
 
-            if session['start'] == 'e':
-                return redirect(url_for('final_page'))
-            elif session['start'] == 'c':
-                return redirect(url_for('study_break'))
+            return redirect(url_for('survey_con'))
+            # if session['start'] == 'e':
+            #     return redirect(url_for('final_page'))
+            # elif session['start'] == 'c':
+            #     return redirect(url_for('study_break'))
 
         return render_template("cloud.html", form=form, user=session['username'],  sec1=session['entanglement'], sec2=session['cryptography'], sec3=session['cloud'])
     else:
