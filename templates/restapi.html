@@ -25,6 +25,9 @@
       {%if sec3%}
       <li><a href="{{url_for('dnsHarvesting')}}">Section 3 <i style="color:green;" class="fas fa-check-circle"></i></a>
       </li>
+      {% elif sec2%}
+      <li><a href="{{url_for('dnsHarvesting')}}">Section 3 </a>
+      </li>
       {% else %}
       <li><a class="isDisabled" href="" disabled>Section 3</a></li>
       {% endif %}

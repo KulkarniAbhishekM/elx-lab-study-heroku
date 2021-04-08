@@ -16,12 +16,16 @@
 
       {%if sec2%}
       <li><a href="{{url_for('cryptography')}}">Section 2 <i style="color:green;" class="fas fa-check-circle"></i></a></li>
+      {% elif sec1%}
+      <li><a href="{{url_for('cryptography')}}">Section 2 </a></li>
       {% else %}
       <li><a class="isDisabled" href="" disabled>Section 2</a></li>
       {% endif %}
 
       {%if sec3%}
       <li><a href="{{url_for('cloud')}}">Section 3 <i style="color:green;" class="fas fa-check-circle"></i></a></li>
+      {% elif sec2 %}
+      <li><a href="{{url_for('cloud')}}">Section 3</a></li>
       {% else %}
       <li><a class="isDisabled" href="" disabled>Section 3</a></li>
       {% endif %}
