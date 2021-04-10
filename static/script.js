@@ -9,7 +9,7 @@ var countTotal = 0;
 var countQuiz = 0;
 var countBot = 0;
 
-var openAllowed = false; //chatbot allowed to open after first lesson revealed
+// var openAllowed = false; //chatbot allowed to open after first lesson revealed
 
 // bot interactions
 var wantToLearnCount = 0;
@@ -118,8 +118,10 @@ function addVideoListener() {
       // var bot = document.getElementById("chatbot-text"); //this works
       // bot.style.display = "inline-block";
       openChatbot();
+      document.getElementById("want-to-learn").style.display = "inline-block";
+      document.getElementById("yes-no-buttons").style.display = "inline-block";
       video.pause();
-      openAllowed = true;
+      // openAllowed = true;
     }
   });
 }
@@ -173,12 +175,12 @@ function botCounter() {
 
 function openChatbot() {
   if (document.getElementById("chatbot-text").style.display != "inline-block") {
-    if (openAllowed) {
+    // if (openAllowed) {
       document.getElementById("chatbot-text").style.display = 'inline-block';
       botTimer = setInterval(botCounter, 250);
       refOpenCount.set(++botOpenCount);
       console.log("open bot");
-    }
+    // }
   }
 
 }

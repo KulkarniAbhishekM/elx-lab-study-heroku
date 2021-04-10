@@ -27,7 +27,7 @@
       </li>
       {% elif sec2%}
       <li><a href="{{url_for('dnsHarvesting')}}">Section 3</a>
-      {% else %}
+        {% else %}
       <li><a class="isDisabled" href="" disabled>Section 3</a></li>
       {% endif %}
 
@@ -55,17 +55,37 @@
 
         <div class="received_withd_msg time_date">
           {#<p>{{one_liner}}</p>#}
-          <p>Do you want to learn about Superposition in the context of {{interest}}?</p>
+          {#<p>Do you want to learn about Superposition in the context of {{interest}}?</p>#}
+          <p>Hi! I'm here to help you learn about superposition with the help of your interest, {{interest}}. I will
+            pause the video when the lesson is ready!</p>
         </div>
-        <span class="time_date">
+        {#  <span class="time_date">
 
           <div id="yes-no-buttons">
             <button id="yes-lesson" class="more-line btn btn-sm btn-info" onclick="showLesson()">Yes</button>
             <button id="no-lesson" class="more-line btn btn-sm btn-secondary" onclick="closeChatbot()">No</button>
           </div>
 
-        </span>
+        </span>#}
 
+      </div>
+
+      <div class="received_msg">
+        <div class="received_withd_msg time_date">
+          <p id="want-to-learn" class="more">
+            Do you want to learn about Superposition in the context of {{interest}}?</p>
+
+          <span class="time_date">
+
+          <div id="yes-no-buttons" class="more">
+            <button id="yes-lesson" class="more-line btn btn-sm btn-info" onclick="showLesson()">Yes</button>
+            <button id="no-lesson" class="more-line btn btn-sm btn-secondary" onclick="closeChatbot()">No</button>
+          </div>
+
+        </span>
+        </div>
+
+       
       </div>
 
       <div class="received_msg">
@@ -154,7 +174,7 @@
   addVideoListener();
 
   {%if not sec1 %}
-    addQuizListener(1);
+  addQuizListener(1);
 
   {% endif %}
 </script>
