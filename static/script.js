@@ -103,6 +103,7 @@ function addQuizListener(id) {
     } else if (id == 3) {
       document.getElementById("quiz-body-3").style.display = 'block';
     }
+    document.getElementById("please-scroll-down").style.display = 'block';
     quizTimer = setInterval(quizCounter, 250);
 
   });
