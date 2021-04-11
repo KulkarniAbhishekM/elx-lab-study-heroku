@@ -38,10 +38,17 @@
   <div class="item3">
     <video id="player" width="854" height="482" controls>
      <source src="../static/REST.mp4" type="video/mp4">
-
-
       Your browser does not support the video tag.
     </video>
+
+    {% if not sec2 %}
+    <h3 id="please-scroll-down" class="more">please scroll down to the quiz <svg xmlns="http://www.w3.org/2000/svg"
+        width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+      </svg></h3>
+    {%endif%}
+
   </div>
   <div class="item4">
     <div id="chatbot-text" class="hidestart">
@@ -56,15 +63,36 @@
           </button></span>
         <div class="received_withd_msg time_date">
           {#<p>{{one_liner}}</p>#}
-          <p>Do you want to learn about REST APIs in the context of {{interest}}?</p>
+          {#<p>Do you want to learn about REST APIs in the context of {{interest}}?</p>#}
+
+           <p>Hi! I'm here to help you learn about REST APIs with the help of your interest, {{interest}}. I will
+            pause the video when the lesson is ready!</p>
         </div>
-        <span class="time_date">
+        {#<span class="time_date">
 
           <div id="yes-no-buttons">
             <button id="yes-lesson" class="more-line btn btn-sm btn-info" onclick="showLesson()">Yes</button>
             <button id="no-lesson" class="more-line btn btn-sm btn-secondary" onclick="closeChatbot()">No</button>
           </div>
-        </span>
+        </span>#}
+
+      </div>
+
+      <div class="received_msg">
+        <div class="received_withd_msg time_date">
+          <p id="want-to-learn" class="more">
+            Do you want to learn about REST APIs in the context of {{interest}}?</p>
+
+          <span class="time_date">
+
+            <div id="yes-no-buttons" class="more">
+              <button id="yes-lesson" class="more-line btn btn-sm btn-info" onclick="showLesson()">Yes</button>
+              <button id="no-lesson" class="more-line btn btn-sm btn-secondary" onclick="closeChatbot()">No</button>
+            </div>
+
+          </span>
+        </div>
+
 
       </div>
 
