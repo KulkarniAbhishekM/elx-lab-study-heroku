@@ -43,7 +43,7 @@ class superpositionQuiz(FlaskForm):
         
     question1 = RadioField("What is superposition?", [DataRequired()], choices=[(1, 'A. The ability of a particle to amplify or diminish'), (2, 'B. The ability of a particle to exist in multiple states at different times'), (3, 'C. The ability of a particle to exist in the same state at different times'), (4, 'D. The ability for a particle to exist in multiple states at the same time')])
     question2 = RadioField("What advantage does quantum computing offer over classic computing?", [DataRequired()], choices=[(1, 'A. It allows faster processing of zeroes and ones'), (2, 'B. It supports additional binary numbers'), (3, 'C. It can process multiple states in parallel'), (4, 'D. It can run calculations on a remote computer')])
-    question3 = StringField("Please write a brief summary of the science concept discussed in the video.", [DataRequired()])
+    # question3 = StringField("Please write a brief summary of the science concept discussed in the video.", [DataRequired()])
 
     submit = SubmitField('Submit Quiz & Continue', render_kw={"onclick": "writeNewPost()"})
 
@@ -51,7 +51,7 @@ class restAPIQuiz(FlaskForm):
         
     question1 = RadioField("What is REST?", [DataRequired()], choices=[(1, 'A. A software used to build websites'), (2, 'B. A design concept used on top of UDP'), (3, 'C. A design concept used on top of HTTP'), (4, 'D. A programming paradigm used on top of JavaScript')])
     question2 = RadioField("Which of the following is not an architectural REST constraint?", [DataRequired()], choices=[(1, 'A. Client-Server'), (2, 'B. Stateless'), (3, 'C. Serverless'), (4, 'D. Layered System')])
-    question3 = StringField("Please write a brief summary of the science concept discussed in the video.", [DataRequired()])
+    # question3 = StringField("Please write a brief summary of the science concept discussed in the video.", [DataRequired()])
 
     submit = SubmitField('Submit Quiz & Continue')
 
@@ -59,7 +59,7 @@ class dnsHarvestingQuiz(FlaskForm):
         
     question1 = RadioField("What is Domain Name Service (DNS)?", [DataRequired()], choices=[(1, 'A. A way to set the name of a domain you own'), (2, 'B. A way to translate domain names to IP addresses'), (3, 'C. A way to translate IP addresses to domain names'), (4, 'D. A way to transfer data from one domain to another')])
     question2 = RadioField("Q2. Which one of the following tools does not provide useful information for DNS harvesting?", [DataRequired()], choices=[(1, 'A. nslookup'), (2, 'B. dig'), (3, 'C. WHOIS'), (4, 'D. ipconfig')])
-    question3 = StringField("Please write a brief summary of the science concept discussed in the video.", [DataRequired()])
+    # question3 = StringField("Please write a brief summary of the science concept discussed in the video.", [DataRequired()])
 
     submit = SubmitField('Submit Quiz & Continue')
 
@@ -67,7 +67,7 @@ class entaglementQuiz(FlaskForm):
         
     question1 = RadioField("What is entanglement?", [DataRequired()], choices=[(1, 'A. The phenomenon that occurs when two distinct particles collide and entangle with each other'), (2, 'B. The phenomenon that occurs when two particles respond to each other, even when they have no physical connection between them'), (3, 'C. The phenomenon that occurs when two particles react and form a new particle'), (4, 'D. The phenomenon that occurs when two particles interfere with each other')])
     question2 = RadioField("In entanglement, what relationship do the particles have?", [DataRequired()], choices=[(1, 'A. The particles are identical to each other'), (2, 'B. The particles are complements of each other'), (3, 'C. The particles are physically close to each other'), (4, 'D. The particles are in a continual state of motion')])
-    question3 = StringField("Please write a brief summary of the science concept discussed in the video.", [DataRequired()])
+    # question3 = StringField("Please write a brief summary of the science concept discussed in the video.", [DataRequired()])
 
     submit = SubmitField('Submit Quiz & Continue')
 
@@ -76,7 +76,7 @@ class cryptographyQuiz(FlaskForm):
         
     question1 = RadioField("What is cryptography?", [DataRequired()], choices=[(1, 'A. Converting cleartext to ciphertext'), (2, 'B. Converting ciphertext to cleartext'), (3, 'C. Converting cleartext to ciphertext, and back to cleartext'), (4, 'D. Converting ciphertext to cleartext, and back to ciphertext')])
     question2 = RadioField("What is the difference between symmetric and asymmetric cryptography?", [DataRequired()], choices=[(1, 'A. Symmetric cryptography can use one or two keys to encrypt and decrypt data'), (2, 'B. Symmetric cryptography uses the same key to encrypt and decrypt data'), (3, 'C. Asymmetric cryptography only uses the RSA protocol'), (4, 'D. Asymmetric cryptography uses the same key to encrypt and decrypt data')])
-    question3 = StringField("Please write a brief summary of the science concept discussed in the video.", [DataRequired()])
+    # question3 = StringField("Please write a brief summary of the science concept discussed in the video.", [DataRequired()])
 
     submit = SubmitField('Submit Quiz & Continue')
 
@@ -84,7 +84,7 @@ class cloudQuiz(FlaskForm):
         
     question1 = RadioField("What are the three cloud computing models?", [DataRequired()], choices=[(1, 'A. Infrastructure as a service, Processing as a service, Software as a service'), (2, 'B. Platform as a service, Storage as a service, Software as a service'), (3, 'C. Software as a service, Storage as a service, Infrastructure as a service'), (4, 'D. Software as a service, Infrastructure as a service, Platform as a service')])
     question2 = RadioField("Which of the following is true about Platform as a Service (PaaS)?", [DataRequired()], choices=[(1, 'A. The user needs to manage the platform and applications'), (2, 'B. The user needs to manage the applications only'), (3, 'C. The user needs to manage the platform only'), (4, 'D. The user does not need to manage anything')])
-    question3 = StringField("Please write a brief summary of the science concept discussed in the video.", [DataRequired()])
+    # question3 = StringField("Please write a brief summary of the science concept discussed in the video.", [DataRequired()])
 
     submit = SubmitField('Submit Quiz & Continue')
 
@@ -205,7 +205,7 @@ def superposition():
         form = superpositionQuiz()
         question1 = False
         question2 = False
-        question3 = False
+        # question3 = False
 
         superLesson = db.child("lessons").child("superposition").child(session['interest']).get().val()
         one_liner = superLesson['one-liner']
@@ -216,7 +216,7 @@ def superposition():
             data = {
                 "superpositionQ1": form.question1.data,
                 "superpositionQ2": form.question2.data,
-                "superpositionQ3": form.question3.data
+                # "superpositionQ3": form.question3.data
             }
 
             db.child(session['username']).child('experimental').child('superposition').update(data)
@@ -243,7 +243,7 @@ def restAPI():
 
         question1 = False
         question2 = False
-        question3 = False
+        # question3 = False
 
         restAPILesson = db.child("lessons").child("restapi").child(session['interest']).get().val()
         one_liner = restAPILesson['one-liner']
@@ -254,7 +254,7 @@ def restAPI():
             data = {
                 "restQ1": form.question1.data,
                 "restQ2": form.question2.data,
-                "restQ3": form.question3.data
+                # "restQ3": form.question3.data
             }
 
             db.child(session['username']).child('experimental').child('restAPI').update(data)
@@ -274,7 +274,7 @@ def dnsHarvesting():
 
         question1 = False
         question2 = False
-        question3 = False
+        # question3 = False
 
         dnsLesson = db.child("lessons").child("dns").child(session['interest']).get().val()
         one_liner = dnsLesson['one-liner']
@@ -285,7 +285,7 @@ def dnsHarvesting():
             data = {
                 "dnsQ1": form.question1.data,
                 "dnsQ2": form.question2.data,
-                "dnsQ3": form.question3.data
+                # "dnsQ3": form.question3.data
             }
 
             db.child(session['username']).child('experimental').child('dns').update(data)
@@ -312,14 +312,14 @@ def entanglement():
 
         question1 = False
         question2 = False
-        question3 = False
+        # question3 = False
 
         if form.validate_on_submit():
 
             data = {
                 "entanglementQ1": form.question1.data,
                 "entanglementQ2": form.question2.data,
-                "entanglementQ3": form.question3.data
+                # "entanglementQ3": form.question3.data
             }
 
             db.child(session['username']).child('control').child('entanglement').update(data)
@@ -341,14 +341,14 @@ def cryptography():
 
         question1 = False
         question2 = False
-        question3 = False
+        # question3 = False
 
         if form.validate_on_submit():
         
             data = {
                 "cryptographyQ1": form.question1.data,
                 "cryptographyQ2": form.question2.data,
-                "cryptographyQ3": form.question3.data
+                # "cryptographyQ3": form.question3.data
             }
 
             db.child(session['username']).child('control').child('cryptography').update(data)
@@ -368,14 +368,14 @@ def cloud():
 
         question1 = False
         question2 = False
-        question3 = False
+        # question3 = False
 
         if form.validate_on_submit():
 
             data = {
                 "cloudQ1": form.question1.data,
                 "cloudQ2": form.question2.data,
-                "cloudQ3": form.question3.data
+                # "cloudQ3": form.question3.data
             }
 
             db.child(session['username']).child('control').child('cloud').update(data)
